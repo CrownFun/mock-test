@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pl.filewicz.mock_test.client.AnimalApi;
 import pl.filewicz.mock_test.model.AnimalDto;
-import pl.filewicz.mock_test.model.REGION_DTO;
+import pl.filewicz.mock_test.model.Region_dto;
 import pl.filewicz.mock_test.service.AnimalService;
 import pl.filewicz.mock_test.usecase.AnimalUsecase;
 
@@ -30,7 +30,7 @@ class AnimalControllerTest {
     public void test2() {
 
 
-        AnimalDto fish = new AnimalDto("fish", REGION_DTO.AFRICA,true);
+        AnimalDto fish = new AnimalDto("fish", Region_dto.AFRICA,true);
 
         when(animalService.cretaeAnimalDto("bear")).thenReturn(fish);
         doNothing().when(animalApi).sendAnimal(fish);
