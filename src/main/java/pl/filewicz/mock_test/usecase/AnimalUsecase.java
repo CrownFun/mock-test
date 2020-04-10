@@ -23,12 +23,14 @@ public class AnimalUsecase {
         AnimalDto dto = service.cretaeAnimalDto(name);
 
         try {
-            ResponseEntity<Void> voidResponseEntity = Optional.ofNullable(dto)
+            ResponseEntity<Void> response = Optional.ofNullable(dto)
                     .map(animalClient::saveAnimal)
                     .orElseThrow(() -> new RuntimeException("Nie udało sie utworzyc obiektu! "));
 
-            if (zmianastanu(dto,voidResponseEntity)) {
+            if (zmianastanu(dto,response)) {
                 System.out.println("zmiana stanu");
+            }else {
+                System.out.println("nie zmieniono stanu!");
             }
 
         } catch (RestClientException e) {
@@ -39,11 +41,11 @@ public class AnimalUsecase {
 
     }
 
-    private boolean zmianastanu(AnimalDto animal, ResponseEntity entity) {
-        if (entity == null) {
+    private boolean zmianastanu(AnimalDto animal, ResponseEntity response) {
+        if (response == null) {
             return false;
         }
-        return entity.getStatusCode() == HttpStatus.CREATED || entity.getStatusCode() == HttpStatus.UNPROCESSABLE_ENTITY;
+        return response.getStatusCode() == HttpStatus.CREATED || response.getStatusCode() == HttpStatus.UNPROCESSABLE_ENTITY;
     }
 
 }

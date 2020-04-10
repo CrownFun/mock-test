@@ -30,7 +30,7 @@ public class AnimalApi {
     @PostMapping("/save")
     public ResponseEntity<Void> addAnimals(@RequestBody AnimalDto animalDto) {
         System.out.println("zapis a Api!");
-        if (animalDto.getWaga() == 100) {
+        if (animalDto.getName().equals("cat")) {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         } else
         return new ResponseEntity<>(HttpStatus.CREATED);
