@@ -36,7 +36,10 @@ public class AnimalApi {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello from rest Api:)";
+    }
 
 
 }

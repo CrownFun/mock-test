@@ -16,7 +16,7 @@ public class MockTestApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(MockTestApplication.class, args);
 
         AnimalUsecase usecae = ctx.getBean(AnimalUsecase.class);
-        usecae.execute("cat");
+        usecae.execute("tiger");
 
 
     }

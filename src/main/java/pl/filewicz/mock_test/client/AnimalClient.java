@@ -31,7 +31,14 @@ public class AnimalClient {
     }
 
     public List<Animal> getAllAnimals() {
-        ResponseEntity<List<Animal>> exchange = restTemplate.exchange("http://localhost:8086/api/animals", HttpMethod.GET, null, new ParameterizedTypeReference<List<Animal>>() {
+        ResponseEntity<List<Animal>> exchange = restTemplate.exchange("http://localhost:8085/api/animals", HttpMethod.GET, null, new ParameterizedTypeReference<List<Animal>>() {
+        });
+        return exchange.getBody();
+
+    }
+
+    public String hello() {
+        ResponseEntity<String> exchange = restTemplate.exchange("http://localhost:8085/api/hello", HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
         });
         return exchange.getBody();
 
