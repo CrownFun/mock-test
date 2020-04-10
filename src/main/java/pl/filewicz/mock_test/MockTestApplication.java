@@ -3,7 +3,6 @@ package pl.filewicz.mock_test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.filewicz.mock_test.client.AnimalClient;
 import pl.filewicz.mock_test.mapper.AnimalMapper;
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
@@ -16,16 +15,9 @@ public class MockTestApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(MockTestApplication.class, args);
 
-//        AnimalUsecase usecae = ctx.getBean(AnimalUsecase.class);
-//        usecae.execute("fox");
+        AnimalUsecase usecae = ctx.getBean(AnimalUsecase.class);
+        usecae.execute("cat");
 
-
-
-        Animal animal = new Animal("cat", REGION.EUROPE, false, "sdgsjd");
-
-        AnimalDto animalDto = AnimalMapper.INSTANCE.animalToDto(animal);
-
-        System.out.println(animalDto);
 
     }
 

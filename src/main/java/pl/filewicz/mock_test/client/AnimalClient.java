@@ -20,14 +20,12 @@ public class AnimalClient {
     private final RestTemplate restTemplate;
 
     public ResponseEntity<Void> saveAnimal(AnimalDto dto) {
-      Animal animal = new Animal();
         try {
-            restTemplate.postForEntity("http://localhost:8085/api/save", animal, Animal.class);
+            restTemplate.postForEntity("http://localhost:8085/api/save", dto, AnimalDto.class);
             System.out.println("POomyslenie zapisano- client !");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (HttpStatusCodeException e) {
-            e.printStackTrace();
-            System.out.println("Jest połaczenie ale bład " + e.getStatusCode());
+            System.out.println("Jest połaczenie ale błąd  " + e.getStatusCode());
             return new ResponseEntity<>(e.getStatusCode());
         }
     }
