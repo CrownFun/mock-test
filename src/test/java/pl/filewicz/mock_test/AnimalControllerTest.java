@@ -55,7 +55,7 @@ class AnimalControllerTest {
     public void test2() {
 
 
-        AnimalDto fish = new AnimalDto("fish");
+        AnimalDto fish = new AnimalDto();
 
         when(animalService.cretaeAnimalDto("cat")).thenReturn(fish);
         when(animalApi.addAnimalDto(fish)).thenReturn("cat");
@@ -73,10 +73,10 @@ class AnimalControllerTest {
     private List<Animal> preparedata() {
 
         List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal("cat"));
-        animals.add(new Animal("dog"));
-        animals.add(new Animal("fax"));
-        return animals;
+//        animals.add(new Animal("cat"));
+//        animals.add(new Animal("dog"));
+//        animals.add(new Animal("fax"));
+        return null;
     }
 
 }

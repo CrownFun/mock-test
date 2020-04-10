@@ -1,20 +1,18 @@
 package pl.filewicz.mock_test.mapper;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.DecoratedWith;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
 
-@Component
-public class AnimalMapper {
+@Mapper
+@DecoratedWith(AnimalMapperDecorator.class)
+public interface AnimalMapper {
 
-    public AnimalDto animalToDto(Animal animal) {
+    AnimalMapper INSTANCE = Mappers.getMapper(AnimalMapper.class);
 
-        return new AnimalDto(animal.getName());
-    }
-
-    public Animal dtoToAnimal(AnimalDto animalDto) {
-        return new Animal(animalDto.getName());
-    }
+    AnimalDto animalToDto(Animal animal);
 
 
 }

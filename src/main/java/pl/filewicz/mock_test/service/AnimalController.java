@@ -1,9 +1,12 @@
 package pl.filewicz.mock_test.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
+import pl.filewicz.mock_test.model.REGION;
 import pl.filewicz.mock_test.repo.AnimalRepo;
 import pl.filewicz.mock_test.rest.AnimalApi;
 import pl.filewicz.mock_test.service.AnimalService;
@@ -35,6 +38,15 @@ public class AnimalController {
         AnimalDto animalDto = animalService.cretaeAnimalDto(name);
         animalApi.addAnimalDto(animalDto);
        animalApi.siema();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void init() {
+        System.out.println("zapisuej zwierzaki");
+        animalRepo.save(new Animal("cat", REGION.EUROPE,false,"sdgsjd"));
+        animalRepo.save(new Animal("lion", REGION.AFRICA,true,"sdgsjd"));
+        animalRepo.save(new Animal("snake", REGION.AUSTRALIA,true,"sdgsjd"));
+        animalRepo.save(new Animal("tiger", REGION.ASIA,true,"sdgsjd"));
     }
 
 

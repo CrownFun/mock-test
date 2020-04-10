@@ -19,7 +19,9 @@ public class AnimalUsecase {
     private final AnimalService service;
 
     public void execute(String name) {
+
         AnimalDto dto = service.cretaeAnimalDto(name);
+
         try {
             ResponseEntity<Void> voidResponseEntity = Optional.ofNullable(dto)
                     .map(animalClient::saveAnimal)

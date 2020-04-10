@@ -20,11 +20,10 @@ public class AnimalClient {
     private final RestTemplate restTemplate;
 
     public ResponseEntity<Void> saveAnimal(AnimalDto dto) {
-        Animal animal = new Animal(dto.getName());
-        animal.setWaga(200);
+      Animal animal = new Animal();
         try {
-            restTemplate.postForEntity("http://localhost:8086/api/save", animal, Animal.class);
-            System.out.println("POomyslenie zapisano!");
+            restTemplate.postForEntity("http://localhost:8085/api/save", animal, Animal.class);
+            System.out.println("POomyslenie zapisano- client !");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (HttpStatusCodeException e) {
             e.printStackTrace();

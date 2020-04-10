@@ -11,7 +11,6 @@ public class ApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);
 
-BigInteger sds = new BigInteger("100");
     }
 
 }

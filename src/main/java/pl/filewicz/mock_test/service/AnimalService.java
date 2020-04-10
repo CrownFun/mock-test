@@ -14,14 +14,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AnimalService {
 
-    private final AnimalMapper animalMapper;
     private final AnimalApi animalApi;
 
     public AnimalDto cretaeAnimalDto(String name) {
         System.out.println("tworze zwierzaka");
         List<Animal> animals = animalApi.getAnimals();
         Animal animal1 = animals.stream().filter(animal -> animal.getName().equals(name)).collect(Collectors.toList()).get(0);
-        return animalMapper.animalToDto(animal1);
+        return AnimalMapper.INSTANCE.animalToDto(animal1);
     }
 
 }
