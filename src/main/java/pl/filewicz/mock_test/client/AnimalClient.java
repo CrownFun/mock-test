@@ -18,10 +18,11 @@ import java.util.List;
 public class AnimalClient {
 
     private final RestTemplate restTemplate;
+    private final AnimalApi animalApi;
 
     public ResponseEntity<Void> saveAnimal(AnimalDto dto) {
         try {
-            restTemplate.postForEntity("http://localhost:8085/api/save", dto, AnimalDto.class);
+            animalApi.sendAnimal(dto);
             System.out.println("POomyslenie zapisano- client !");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (HttpStatusCodeException e) {
