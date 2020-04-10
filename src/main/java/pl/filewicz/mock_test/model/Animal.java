@@ -17,11 +17,12 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private REGION region;
+    private Region region;
     private boolean isWild;
     private String decription;
+    private Status status;
 
-    public Animal(String name, REGION region, boolean isWild, String decription) {
+    public Animal(String name, Region region, boolean isWild, String decription) {
         this.name = name;
         this.region = region;
         this.isWild = isWild;

@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 public class AnimalDto {
 
     private String name;
-    private REGION_DTO  region_dto;
+    private Region_dto region_dto;
     private boolean isWilde;
+    private Status status;
 
-    public AnimalDto(String name, REGION_DTO region_dto, boolean isWilde) {
+    public AnimalDto(String name, Region_dto region_dto, boolean isWilde) {
         this.name = name;
         this.region_dto = region_dto;
         this.isWilde = isWilde;

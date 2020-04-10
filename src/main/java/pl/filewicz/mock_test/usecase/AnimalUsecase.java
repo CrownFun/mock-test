@@ -7,11 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClientException;
 import pl.filewicz.mock_test.client.AnimalApi;
-import pl.filewicz.mock_test.client.AnimalClient;
 import pl.filewicz.mock_test.model.AnimalDto;
+import pl.filewicz.mock_test.model.Status;
 import pl.filewicz.mock_test.service.AnimalService;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -27,9 +25,11 @@ public class AnimalUsecase {
         try {
             ResponseEntity<Void> response = wysylkaAnimal(dto);
 
-            if (zmianastanu(dto,response)) {
+            if (czyZmianaStanu(dto, response)) {
                 System.out.println("zmiana stanu");
-            }else {
+                zmianaStanu(dto,response);
+                System.out.println(dto.getStatus());
+            } else {
                 System.out.println("nie zmieniono stanu!");
             }
 
@@ -39,6 +39,14 @@ public class AnimalUsecase {
         }
 
 
+    }
+
+    private void zmianaStanu(AnimalDto animalDto, ResponseEntity responseEntity) {
+        if (responseEntity.getStatusCodeValue() == 201) {
+            animalDto.setStatus(Status.PRZYJETY_DO_ZOO);
+        } else if (responseEntity.getStatusCodeValue() == 422) {
+            animalDto.setStatus(Status.ODRZUCONY_PREZ_ZOO);
+        }
     }
 
     private ResponseEntity<Void> wysylkaAnimal(AnimalDto animalDto) {
@@ -53,7 +61,7 @@ public class AnimalUsecase {
         }
     }
 
-    private boolean zmianastanu(AnimalDto animal, ResponseEntity response) {
+    private boolean czyZmianaStanu(AnimalDto animal, ResponseEntity response) {
         if (response == null) {
             return false;
         }

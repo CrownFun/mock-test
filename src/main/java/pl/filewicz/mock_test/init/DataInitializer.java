@@ -5,7 +5,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import pl.filewicz.mock_test.model.Animal;
-import pl.filewicz.mock_test.model.REGION;
+import pl.filewicz.mock_test.model.Region;
 import pl.filewicz.mock_test.repo.AnimalRepo;
 
 @Component
@@ -17,10 +17,10 @@ public class DataInitializer {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         System.out.println("zapisuje zwierzaki init");
-        animalRepo.save(new Animal("cat", REGION.EUROPE, false, "kfhksdhf"));
-        animalRepo.save(new Animal("tiger", REGION.ASIA, true, "kfhksdhf"));
-        animalRepo.save(new Animal("lion", REGION.AMERICA, true, "kfhksdhf"));
-        animalRepo.save(new Animal("snake", REGION.AUSTRALIA, true, "kfhksdhf"));
+        animalRepo.save(new Animal("cat", Region.EUROPE, false, "kfhksdhf"));
+        animalRepo.save(new Animal("tiger", Region.ASIA, true, "kfhksdhf"));
+        animalRepo.save(new Animal("lion", Region.AMERICA, true, "kfhksdhf"));
+        animalRepo.save(new Animal("snake", Region.AUSTRALIA, true, "kfhksdhf"));
     }
 
 }

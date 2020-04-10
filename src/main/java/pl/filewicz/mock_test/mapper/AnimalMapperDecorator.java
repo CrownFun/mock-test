@@ -2,8 +2,8 @@ package pl.filewicz.mock_test.mapper;
 
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
-import pl.filewicz.mock_test.model.REGION;
-import pl.filewicz.mock_test.model.REGION_DTO;
+import pl.filewicz.mock_test.model.Region;
+import pl.filewicz.mock_test.model.Region_dto;
 
 public abstract class AnimalMapperDecorator implements AnimalMapper {
 
@@ -20,26 +20,26 @@ public abstract class AnimalMapperDecorator implements AnimalMapper {
         return animalDto;
     }
 
-    private static REGION_DTO convertRegion(REGION region) {
+    private static Region_dto convertRegion(Region region) {
 
-        REGION_DTO regionDto = null;
+        Region_dto regionDto = null;
 
 
         switch (region) {
             case ASIA:
-                regionDto = REGION_DTO.ASIA;
+                regionDto = Region_dto.ASIA;
                 break;
             case AFRICA:
-                regionDto = REGION_DTO.AFRICA;
+                regionDto = Region_dto.AFRICA;
                 break;
             case EUROPE:
-                regionDto = REGION_DTO.EUROPE;
+                regionDto = Region_dto.EUROPE;
                 break;
             case AMERICA:
-                regionDto = REGION_DTO.AMERICA;
+                regionDto = Region_dto.AMERICA;
                 break;
             case AUSTRALIA:
-                regionDto = REGION_DTO.AUSTRALIA;
+                regionDto = Region_dto.AUSTRALIA;
                 break;
         }
         return regionDto;

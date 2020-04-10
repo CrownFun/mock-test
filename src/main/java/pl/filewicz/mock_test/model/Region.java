@@ -1,6 +1,6 @@
 package pl.filewicz.mock_test.model;
 
-public enum REGION {
+public enum Region {
 
     AFRICA,
     EUROPE,
