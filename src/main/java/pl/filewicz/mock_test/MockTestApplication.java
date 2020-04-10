@@ -3,7 +3,6 @@ package pl.filewicz.mock_test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.filewicz.mock_test.client.AnimalClient;
 import pl.filewicz.mock_test.usecase.AnimalUsecase;
 
 @SpringBootApplication
@@ -13,10 +12,7 @@ public class MockTestApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(MockTestApplication.class, args);
 
         AnimalUsecase usecae = ctx.getBean(AnimalUsecase.class);
-
-        AnimalClient client = ctx.getBean(AnimalClient.class);
-
-        usecae.execute("fox");
+        usecae.execute("tiger");
 
 
     }
