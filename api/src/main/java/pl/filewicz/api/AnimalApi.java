@@ -28,23 +28,15 @@ public class AnimalApi {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Void> addAnimals(@RequestBody Animal animal) {
+    public ResponseEntity<Void> addAnimals(@RequestBody AnimalDto animalDto) {
         System.out.println("zapis a Api!");
-        if (animal.getWaga() == 100) {
+        if (animalDto.getWaga() == 100) {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         } else
-            animalRepo.save(animal);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void init() {
-        System.out.println("zapisuej zwierzaki");
-        animalRepo.save(new Animal("spider"));
-        animalRepo.save(new Animal("fox"));
-        animalRepo.save(new Animal("spider"));
-        animalRepo.save(new Animal("snake"));
-    }
+
 
 
 }

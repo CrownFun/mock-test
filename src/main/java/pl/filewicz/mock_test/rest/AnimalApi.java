@@ -32,14 +32,14 @@ public class AnimalApi {
     public void addAnimals(@RequestBody Animal animal) {
         animalController.addAnimal(animal);
     }
-
+//
     private List<Animal> preparedata() {
 
-        List<Animal> animals = new ArrayList<>();
-        animals.add(new Animal("dog"));
-        animals.add(new Animal("fox"));
-        animals.add(new Animal("spider"));
-        return animals;
+//        List<Animal> animals = new ArrayList<>();
+//        animals.add(new Animal("dog"));
+//        animals.add(new Animal("fox"));
+//        animals.add(new Animal("spider"));
+        return null;
     }
 
 
