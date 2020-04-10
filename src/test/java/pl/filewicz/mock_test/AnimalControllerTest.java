@@ -1,81 +1,55 @@
-//package pl.filewicz.mock_test;
-//
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.mockito.InjectMocks;
-//import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
-//import pl.filewicz.mock_test.model.Animal;
-//import pl.filewicz.mock_test.model.AnimalDto;
-//import pl.filewicz.mock_test.repo.AnimalRepo;
-//import pl.filewicz.mock_test.rest.AnimalClient;
-//import pl.filewicz.mock_test.service.AnimalService;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.mockito.ArgumentMatchers.any;
-//import static org.mockito.BDDMockito.given;
-//import static org.mockito.Mockito.atLeast;
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.times;
-//import static org.mockito.Mockito.verify;
-//import static org.mockito.Mockito.when;
-//
-//@ExtendWith(MockitoExtension.class)
-//class AnimalControllerTest {
-//
-//    @Mock
-//    private AnimalRepo animalRepo;
-//
-//    @Mock
-//    private AnimalService animalService;
-//
-//    @Mock
-//    private AnimalClient animalApi;
-//
-//    @InjectMocks
-//    private AnimalClient animalController;
-//
-//
-//    @Test
-//    public void test() {
-//
-//        given(animalRepo.findAll()).willReturn(preparedata());
-//        List<Animal> animals = animalController.getAllAnimals();
-//        assertEquals(animals.size(), 3);
-//        verify(animalRepo, times(1)).findAll();
-//
-//
-//    }
-//
-//    @Test
-//    public void test2() {
-//
-//
-//        AnimalDto fish = new AnimalDto();
-//
-//        when(animalService.cretaeAnimalDto("cat")).thenReturn(fish);
-//        when(animalApi.addAnimalDto(fish)).thenReturn("cat");
-//
-//        animalController.execute("cat");
-//
-//        verify(animalApi,times(1)).siema();
-//        verify(animalApi, atLeast(1)).addAnimalDto(fish);
-//
-//
-//
-//    }
-//
-//
-//    private List<Animal> preparedata() {
-//
-//        List<Animal> animals = new ArrayList<>();
-////        animals.add(new Animal("cat"));
-////        animals.add(new Animal("dog"));
-////        animals.add(new Animal("fax"));
-//        return null;
-//    }
-//
-//}
+package pl.filewicz.mock_test;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import pl.filewicz.mock_test.client.AnimalClient;
+import pl.filewicz.mock_test.model.Animal;
+import pl.filewicz.mock_test.model.AnimalDto;
+import pl.filewicz.mock_test.model.REGION_DTO;
+import pl.filewicz.mock_test.service.AnimalService;
+import pl.filewicz.mock_test.usecase.AnimalUsecase;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class AnimalControllerTest {
+
+    @Mock
+    private AnimalClient animalClient;
+
+    @Mock
+    private AnimalService animalService;
+
+    @InjectMocks
+    private AnimalUsecase usecase;
+
+
+    @Test
+    public void test2() {
+
+
+        AnimalDto fish = new AnimalDto("fish", REGION_DTO.AFRICA,true);
+
+        when(animalService.cretaeAnimalDto("bear")).thenReturn(fish);
+        when(animalClient.saveAnimal(fish)).thenReturn(new ResponseEntity<>(HttpStatus.CREATED));
+
+        usecase.execute("bear");
+
+
+        verify(animalService,times(1)).cretaeAnimalDto("bear");
+        verify(animalClient, atLeast(1)).saveAnimal(fish);
+
+
+    }
+
+
+
+}

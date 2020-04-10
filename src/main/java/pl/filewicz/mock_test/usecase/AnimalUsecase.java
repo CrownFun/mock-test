@@ -23,9 +23,7 @@ public class AnimalUsecase {
         AnimalDto dto = service.cretaeAnimalDto(name);
 
         try {
-            ResponseEntity<Void> response = Optional.ofNullable(dto)
-                    .map(animalClient::saveAnimal)
-                    .orElseThrow(() -> new RuntimeException("Nie udało sie utworzyc obiektu! "));
+            ResponseEntity<Void> response = animalClient.saveAnimal(dto);
 
             if (zmianastanu(dto,response)) {
                 System.out.println("zmiana stanu");
