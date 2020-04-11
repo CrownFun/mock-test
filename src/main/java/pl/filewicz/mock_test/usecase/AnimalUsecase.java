@@ -20,9 +20,8 @@ public class AnimalUsecase {
 
     public void execute(String name) {
 
-        AnimalDto dto = service.cretaeAnimalDto(name);
-
         try {
+            AnimalDto dto = service.cretaeAnimalDto(name);
             ResponseEntity<Void> response = wysylkaAnimal(dto);
 
             if (czyZmianaStanu(dto, response)) {
