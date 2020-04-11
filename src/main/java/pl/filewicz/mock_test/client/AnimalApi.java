@@ -13,6 +13,7 @@ public class AnimalApi {
 
 
     public void sendAnimal(AnimalDto animalDto){
+        System.out.println("wysyła się " + animalDto.getName());
         restTemplate.postForEntity("http://localhost:8085/api/save", animalDto, AnimalDto.class);
     }
 

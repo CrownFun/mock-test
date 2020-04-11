@@ -8,6 +8,8 @@ import pl.filewicz.mock_test.mapper.AnimalMapper;
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AnimalService {
@@ -16,9 +18,12 @@ public class AnimalService {
     private final AnimalCreator animalCreator;
 
     public AnimalDto cretaeAnimalDto(String name) {
-        System.out.println("tworze zwierzaka");
+        System.out.println("tworze zwierzaka  " + name);
         Animal animal = animalRepo.findByName(name);
-        return animalCreator.createAnimalDto(animal);
+
+        return Optional.ofNullable(animal)
+                .map(animalCreator::createAnimalDto)
+                .orElseThrow(() -> new RuntimeException("Nie znaleziono zwierzaka o podanym imieniu"));
     }
 
 }

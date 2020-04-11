@@ -18,18 +18,6 @@ import java.util.List;
 public class AnimalClient {
 
     private final RestTemplate restTemplate;
-    private final AnimalApi animalApi;
-
-    public ResponseEntity<Void> saveAnimal(AnimalDto dto) {
-        try {
-            animalApi.sendAnimal(dto);
-            System.out.println("POomyslenie zapisano- client !");
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (HttpStatusCodeException e) {
-            System.out.println("Jest połaczenie ale błąd  " + e.getStatusCode());
-            return new ResponseEntity<>(e.getStatusCode());
-        }
-    }
 
     public List<Animal> getAllAnimals() {
         ResponseEntity<List<Animal>> exchange = restTemplate.exchange("http://localhost:8085/api/animals", HttpMethod.GET, null, new ParameterizedTypeReference<List<Animal>>() {

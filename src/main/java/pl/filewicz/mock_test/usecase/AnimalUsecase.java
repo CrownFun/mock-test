@@ -20,24 +20,26 @@ public class AnimalUsecase {
 
     public void execute(String name) {
 
+        AnimalDto dto = null;
+
         try {
-            AnimalDto dto = service.cretaeAnimalDto(name);
+            dto = service.cretaeAnimalDto(name);
             ResponseEntity<Void> response = wysylkaAnimal(dto);
 
             if (czyZmianaStanu(dto, response)) {
-                System.out.println("zmiana stanu");
+                System.out.println("zmiana stanu obecny stan " + dto.getStatus());
                 zmianaStanu(dto,response);
-                System.out.println(dto.getStatus());
+                System.out.println("stan po zmianie " + dto.getStatus());
             } else {
                 System.out.println("nie zmieniono stanu!");
             }
 
         } catch (RestClientException e) {
             System.out.println("Nie udało się nawiązać połaczenia!");
-            e.printStackTrace();
         }
 
-
+        System.out.println("program konczy działanie!");
+        System.out.println("-----------------------------------------");
     }
 
     private void zmianaStanu(AnimalDto animalDto, ResponseEntity responseEntity) {
@@ -49,10 +51,9 @@ public class AnimalUsecase {
     }
 
     private ResponseEntity<Void> wysylkaAnimal(AnimalDto animalDto) {
-
         try {
             animalApi.sendAnimal(animalDto);
-            System.out.println("POomyslenie zapisano- client !");
+            System.out.println("wysłano " + animalDto.getName());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (HttpStatusCodeException e) {
             System.out.println("Jest połaczenie ale błąd  " + e.getStatusCode());
