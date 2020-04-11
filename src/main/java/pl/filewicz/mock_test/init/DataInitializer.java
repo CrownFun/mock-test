@@ -18,10 +18,9 @@ public class DataInitializer {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         System.out.println("zapisuje zwierzaki init");
-        animalRepo.save(new Animal("cat", Region.EUROPE, false, "kfhksdhf", Status.ZŁAPANY));
-        animalRepo.save(new Animal("tiger", Region.ASIA, true, "kfhksdhf",Status.ZŁAPANY));
-        animalRepo.save(new Animal("lion", Region.AMERICA, true, "kfhksdhf",Status.ZŁAPANY));
-        animalRepo.save(new Animal("snake", Region.AUSTRALIA, true, "kfhksdhf",Status.ZŁAPANY));
+        animalRepo.save(new Animal("dog", Region.EUROPE, false, "kfhksdhf", Status.ZŁAPANY));
+        animalRepo.save(new Animal("spider", Region.ASIA, true, "kfhksdhf",Status.ZŁAPANY));
+        animalRepo.save(new Animal("pig", Region.AMERICA, true, "kfhksdhf",Status.ZŁAPANY));
+        animalRepo.save(new Animal("cat", Region.AUSTRALIA, true, "kfhksdhf",Status.ZŁAPANY));
     }
-
 }

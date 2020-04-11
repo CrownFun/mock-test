@@ -15,7 +15,7 @@ public class AnimalConsumer {
 
     private final AnimalUsecase animalUsecase;
 
-    @KafkaListener(topics = "${app.topic.example}")
+    @KafkaListener(topics = "${app.topic.example}",groupId ="HUJ",id ="full-part-id")
     public void receive(@Payload AnimalEvent event, @Headers MessageHeaders headers){
 
 
