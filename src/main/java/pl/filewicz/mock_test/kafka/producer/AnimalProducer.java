@@ -19,7 +19,7 @@ public class AnimalProducer {
     private String topic;
 
     public void send(AnimalEvent event){
-        System.out.println("wysyłanie komunikatu z producera "+event.getName());
+        System.out.println("wysyłanie komunikatu przez producera "+event.getName());
 
         Message<AnimalEvent> message = MessageBuilder
                 .withPayload(event)

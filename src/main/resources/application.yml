@@ -1,5 +1,7 @@
 spring:
   kafka:
+    listener:
+      ack-mode: manual
     bootstrap-servers: localhost:9092
     consumer:
       group-id: HUJ
@@ -8,7 +10,7 @@ spring:
 
 app:
   topic:
-    example: animal2
+    example: animal3
 
 logging:
   level:
