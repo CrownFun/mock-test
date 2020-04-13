@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.kafka.support.Acknowledgment;
 import pl.filewicz.mock_test.client.AnimalApi;
 import pl.filewicz.mock_test.model.AnimalDto;
 import pl.filewicz.mock_test.model.Region_dto;
@@ -22,6 +23,9 @@ class AnimalControllerTest {
     @Mock
     private AnimalService animalService;
 
+    @Mock
+    private Acknowledgment acknowledgment;
+
     @InjectMocks
     private AnimalUsecase usecase;
 
@@ -34,7 +38,8 @@ class AnimalControllerTest {
 
         when(animalService.cretaeAnimalDto("bear")).thenReturn(fish);
         doNothing().when(animalApi).sendAnimal(fish);
-        usecase.execute("bear");
+
+        usecase.execute("bear",acknowledgment);
 
 
         verify(animalService,times(1)).cretaeAnimalDto("bear");

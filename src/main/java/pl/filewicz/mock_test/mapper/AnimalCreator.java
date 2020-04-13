@@ -13,7 +13,6 @@ public class AnimalCreator {
     private final AnimalClient animalClient;
 
     public AnimalDto createAnimalDto(Animal animal){
-        System.out.println(printHello());
         return AnimalMapper.INSTANCE.animalToDto(animal);
     }
 
