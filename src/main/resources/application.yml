@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    listener:
+      ack-mode: manual
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: HUJ
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+
+app:
+  topic:
+    example: animal3
+
+logging:
+  level:
+    root: WARN
+    org.springframework.web: INFO
+    com.memorynotfound: DEBUG

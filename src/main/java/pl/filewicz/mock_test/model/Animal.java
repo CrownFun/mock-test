@@ -22,10 +22,11 @@ public class Animal {
     private String decription;
     private Status status;
 
-    public Animal(String name, Region region, boolean isWild, String decription) {
+    public Animal(String name, Region region, boolean isWild, String decription, Status status) {
         this.name = name;
         this.region = region;
         this.isWild = isWild;
         this.decription = decription;
+        this.status = status;
     }
 }
