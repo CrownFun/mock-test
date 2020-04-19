@@ -6,12 +6,11 @@ import org.mapstruct.factory.Mappers;
 import pl.filewicz.mock_test.model.Animal;
 import pl.filewicz.mock_test.model.AnimalDto;
 
-@Mapper
+@Mapper(uses = RegionMapper.class)
 @DecoratedWith(AnimalMapperDecorator.class)
 public interface AnimalMapper {
 
     AnimalMapper INSTANCE = Mappers.getMapper(AnimalMapper.class);
-
     AnimalDto animalToDto(Animal animal);
 
 
