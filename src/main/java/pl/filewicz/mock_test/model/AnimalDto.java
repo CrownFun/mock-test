@@ -10,7 +10,7 @@ public class AnimalDto {
     private String name;
     private Region_dto region_dto;
     private boolean isWilde;
-    private Status status;
+    private Status_dto status;
 
     public AnimalDto(String name, Region_dto region_dto, boolean isWilde) {
         this.name = name;

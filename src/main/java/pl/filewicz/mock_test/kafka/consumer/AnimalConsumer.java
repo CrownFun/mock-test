@@ -16,7 +16,7 @@ public class AnimalConsumer {
 
     private final AnimalUsecase animalUsecase;
 
-    @KafkaListener(topics = "${app.topic.example}",groupId ="HUJ",id ="full-part-id",containerFactory = "kafkaManualAckListenerContainerFactory")
+//    @KafkaListener(topics = "${app.topic.example}",groupId ="HUJ",id ="full-part-id",containerFactory = "kafkaManualAckListenerContainerFactory")
     public void receive(@Payload AnimalEvent event, @Headers MessageHeaders headers, Acknowledgment acknowledgment ){
 
         System.out.println("odebrano komunikatu przez consumera " + event.getName());
