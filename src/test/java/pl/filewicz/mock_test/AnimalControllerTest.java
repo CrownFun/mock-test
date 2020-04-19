@@ -34,7 +34,7 @@ class AnimalControllerTest {
     public void test2() {
 
 
-        AnimalDto fish = new AnimalDto("fish", Region_dto.AFRICA,true);
+        AnimalDto fish = new AnimalDto("fish", Region_dto.AFRYKA,true);
 
         when(animalService.cretaeAnimalDto("bear")).thenReturn(fish);
         doNothing().when(animalApi).sendAnimal(fish);

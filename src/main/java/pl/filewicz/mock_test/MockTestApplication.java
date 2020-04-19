@@ -22,5 +22,4 @@ public class MockTestApplication {
         System.out.println(animalDto);
 
     }
-
 }

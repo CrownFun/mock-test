@@ -13,5 +13,4 @@ public interface AnimalMapper {
     AnimalMapper INSTANCE = Mappers.getMapper(AnimalMapper.class);
     AnimalDto animalToDto(Animal animal);
 
-
 }

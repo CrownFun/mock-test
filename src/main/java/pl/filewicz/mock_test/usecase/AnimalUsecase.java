@@ -10,6 +10,7 @@ import org.springframework.web.client.RestClientException;
 import pl.filewicz.mock_test.client.AnimalApi;
 import pl.filewicz.mock_test.model.AnimalDto;
 import pl.filewicz.mock_test.model.Status;
+import pl.filewicz.mock_test.model.Status_dto;
 import pl.filewicz.mock_test.service.AnimalService;
 
 @Component
@@ -47,9 +48,9 @@ public class AnimalUsecase {
 
     private void zmianaStanu(AnimalDto animalDto, ResponseEntity responseEntity) {
         if (responseEntity.getStatusCodeValue() == 201) {
-            animalDto.setStatus(Status.PRZYJETY_DO_ZOO);
+            animalDto.setStatus(Status_dto.WZIELI);
         } else if (responseEntity.getStatusCodeValue() == 422) {
-            animalDto.setStatus(Status.ODRZUCONY_PREZ_ZOO);
+            animalDto.setStatus(Status_dto.NIE_WZIELI);
         }
     }
 
