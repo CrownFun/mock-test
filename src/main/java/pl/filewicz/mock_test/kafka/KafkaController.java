@@ -18,7 +18,7 @@ public class KafkaController {
     KafkaController(AnimalProducer producer) {
         this.producer = producer;
     }
-
+    //    http://localhost:8084/kafka/animal
     @PostMapping(value = "/{animal}")
     public void sendMessageToKafkaTopic(@PathVariable("animal") String animal) {
         AnimalEvent animalEvent = new AnimalEvent();
