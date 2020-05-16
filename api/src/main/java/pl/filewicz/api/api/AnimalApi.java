@@ -10,6 +10,7 @@ import pl.filewicz.api.model.AnimalDto;
 public class AnimalApi {
 
     @PostMapping("/save")
+//    http://localhost:8085/api/save
     public ResponseEntity<Void> addAnimals(@RequestBody AnimalDto animalDto) {
         System.out.println("zapis a Api!");
         if (animalDto.getName().equals("cat")) {
@@ -19,6 +20,7 @@ public class AnimalApi {
     }
 
     @GetMapping("/hello")
+    //http://localhost:8085/api/hello
     public String hello(){
         return "hello from rest Api:)";
     }
